@@ -1,0 +1,31 @@
+services:
+  postgresDB:
+    image: postgres:17
+
+    restart: unless-stopped
+
+    container_name: biorobotics-postgres
+
+    environment:
+      POSTGRES_DB: ${DB_NAME}
+      POSTGRES_USER: ${DB_USERNAME}
+      POSTGRES_PASSWORD: ${DB_PASSWORD}
+
+    ports:
+      - "5432:5432"
+
+    volumes:
+      - biorobotics-postgres-data:/var/lib/postgresql/data
+
+    healthcheck:
+      test:
+        [
+          "CMD-SHELL",
+          "pg_isready -U biorobotics_user -d biorobotics"
+        ]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+volumes:
+  biorobotics-postgres-data:
