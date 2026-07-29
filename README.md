@@ -1,3 +1,4 @@
+
 # BioRobotics Ops API
 
 A full-stack portfolio project simulating an operations management platform for biomedical and robotic devices. The application is designed around managing device information, measurements, quality assurance workflows, and audit data while following modern software development practices.
@@ -5,6 +6,7 @@ A full-stack portfolio project simulating an operations management platform for 
 > **Status:** In Development 🚧
 
 ___
+
 ## Overview
 
 BioRobotics Ops API is a portfolio project designed to simulate a real-world backend system used within biomedical engineering, robotics, or regulated manufacturing environments.
@@ -72,6 +74,7 @@ The backend provides the core REST API and data management functionality, while 
 - Prometheus *(planned)*
 - Grafana *(planned)*
 
+[Back to Top](#biorobotics-ops-api)
 ___
 ## Features
 
@@ -138,7 +141,9 @@ Planned frontend functionality includes:
 * Error handling and user feedback
 * Data visualization
 
-The frontend and backend are being developed together so that API functionality can be tested and demonstrated through a practical user interface rather than exclusively through API testing tools.
+*The frontend and backend are being developed together so that API functionality can be tested and demonstrated through a practical user interface rather than exclusively through API testing tools.*
+
+[Back to Top](#biorobotics-ops-api)
 
 ---
 ## Current Progress
@@ -196,12 +201,8 @@ src
 ```
 
 *The frontend will be maintained within the same repository as the backend to keep the application organized as a single full-stack project.*
-## Documentation
 
-### Frontend
-
-
-
+[Back to Top](#biorobotics-ops-api)
 ## Architecture
 
 The application follows a full-stack architecture:
@@ -319,3 +320,4 @@ This project intentionally uses technologies and systems that are outside of my 
 
 [MIT](https://choosealicense.com/licenses/mit/)
 
+[Back to Top](#biorobotics-ops-api)
