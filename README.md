@@ -11,7 +11,7 @@ ___
 
 BioRobotics Ops API is a portfolio project designed to simulate a real-world backend system used within biomedical engineering, robotics, or regulated manufacturing environments.
 
-TThe project is being built from the ground up to strengthen my understanding of enterprise Java development, REST API design, database architecture, full-stack development, testing, and containerized applications.
+The project is being built from the ground up to strengthen my understanding of enterprise Java development, REST API design, database architecture, full-stack development, testing, and containerized applications.
 
 The backend provides the core REST API and data management functionality, while a React frontend is being developed to provide a user-facing interface for interacting with the system.
 
@@ -37,7 +37,7 @@ The backend provides the core REST API and data management functionality, while 
 - Spring Boot 3
 - Spring Web
 - Spring Data JPA
-- Spring Validation
+- Spring Validation *(planned)*
 - Spring Security *(planned)*
 - Maven
 
@@ -62,7 +62,7 @@ The backend provides the core REST API and data management functionality, while 
 
 - JUnit 5
 - Spring Boot Test
-- Testcontainers *(planned)*
+- Test containers *(planned)*
 
 ### Documentation
 
@@ -76,12 +76,6 @@ The backend provides the core REST API and data management functionality, while 
 
 [Back to Top](#biorobotics-ops-api)
 ___
-## Features
-
-- Light/dark mode toggle
-- Live previews
-- Fullscreen mode
-- Cross platform
 
 ## Planned Features
 
@@ -148,6 +142,8 @@ Planned frontend functionality includes:
 
 ---
 ## Current Progress
+
+*[Checkout my project board!](https://github.com/users/BlaineBell21/projects/10)*
 
 ### Completed
 
@@ -241,13 +237,11 @@ The application follows a full-stack architecture:
 
 ## Run Locally
 
-
 ### Prerequisites
 
 * Java 21
 * Docker Desktop
 * Maven (or Maven Wrapper)
-
 
 Clone the project
 
@@ -288,9 +282,9 @@ npm run dev
 ```
 ## Learning Objectives
 
-The primary purpose of this project is to gain practical experience with the technologies, architecture, and development practices used in enterprise software development, particularly in biomedical and robotics-related environments.
+The primary purpose of this project is to gain practical experience with the technologies, architecture, and development practices used in enterprise software development, particularly in biomedical and robotics-related environments, as those are software development fields I am most interested in.
 
-This project intentionally uses technologies and systems that are outside of my previous experience. Rather than building something familiar, I am using the project to challenge myself to learn new tools and understand how the different pieces of a production-style application work together.
+This project intentionally uses technologies and systems that are far outside my comfort zone. Rather than building something familiar, I am using this project to challenge myself to learn new tools and understand how the different pieces of a production-style application work together.
 
 ## Author
 
@@ -298,6 +292,7 @@ This project intentionally uses technologies and systems that are outside of my 
 - [My Github Profile](https://github.com/BlaineBell21)
 - [My LinkedIn Profile](https://www.linkedin.com/in/blaine-bell21/?skipRedirect=true)
 
+*Thank you for showing enough interest in my project to have read this far, I hope you have a wonderful day!*
 
 ## License
 
