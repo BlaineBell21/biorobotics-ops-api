@@ -149,6 +149,8 @@ Planned frontend functionality includes:
 ---
 ## Current Progress
 
+*[Checkout my project board!](https://github.com/users/BlaineBell21/projects/10)*
+
 ### Completed
 
 * [x] Project initialized
