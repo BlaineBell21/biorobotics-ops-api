@@ -122,6 +122,7 @@ ___
 * Application metrics
 * Operational monitoring dashboards
 
+[Back to Top](#biorobotics-ops-api)
 ___
 
 ## Frontend
@@ -240,45 +241,27 @@ The application follows a full-stack architecture:
 
 ## Run Locally
 
-Clone the project
-
-```bash
-  git clone https://link-to-project
-```
-
-Go to the project directory
-
-```bash
-  cd my-project
-```
-
-Install dependencies
-
-```bash
-  npm install
-```
-
-Start the server
-
-```bash
-  npm run start
-```
-
-## Running the Project
 
 ### Prerequisites
 
 * Java 21
 * Docker Desktop
 * Maven (or Maven Wrapper)
-* *Node.js and npm  (WIP)*
 
-### Clone the Repository
+
+Clone the project
 
 ```bash
-git clone https://github.com/BlaineBell21/biorobotics-ops-api.git
-cd biorobotics-ops-api
+  git clone https://github.com/BlaineBell21/biorobotics-ops-api.git
 ```
+
+Go to the project directory
+
+```bash
+  cd biorobotics-ops-api
+```
+
+Install dependencies
 
 ### Start PostgreSQL
 
@@ -294,7 +277,7 @@ docker compose up -d
 
 ### Run the Frontend
 
-*(WIP)*
+* *Node.js and npm  (WIP)*
 
 Once the React frontend is configured:
 

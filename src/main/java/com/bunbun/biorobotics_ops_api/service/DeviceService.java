@@ -55,7 +55,6 @@ public class DeviceService {
                 foundDevice.getStatus());
     }
 
-// todo: figure out how to show all device response objects for get all devices
     public List<DeviceResponse> dtoConversion(){
         List<Device> allDevices = deviceRepository.findAll();
         List<DeviceResponse> deviceDtos = new ArrayList<>();
