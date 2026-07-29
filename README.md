@@ -1,66 +1,32 @@
 # BioRobotics Ops API
 
-A modern Spring Boot REST API for managing medical and robotic device operations, quality assurance workflows, and production data.
+A full-stack portfolio project simulating an operations management platform for biomedical and robotic devices. The application is designed around managing device information, measurements, quality assurance workflows, and audit data while following modern software development practices.
 
 > **Status:** In Development 🚧
 
----
-
+___
 ## Overview
 
 BioRobotics Ops API is a portfolio project designed to simulate a real-world backend system used within biomedical engineering, robotics, or regulated manufacturing environments.
 
-The purpose of this application is for it to be able to manage devices, record measurements, enforce quality rules, and maintain complete audit trails, while following modern backend development practices.
+TThe project is being built from the ground up to strengthen my understanding of enterprise Java development, REST API design, database architecture, full-stack development, testing, and containerized applications.
 
-This project is being built from the ground up to strengthen my understanding of enterprise Java development and industry-standard backend architecture.
+The backend provides the core REST API and data management functionality, while a React frontend is being developed to provide a user-facing interface for interacting with the system.
 
 ---
 
-## Goals
+## Project Goals
 
 - Build a production-style REST API using Spring Boot
-- Learn enterprise application architecture
+- Develop a React-based frontend to interact with the API
+- Practice enterprise application architecture
 - Gain experience working with PostgreSQL and database migrations
 - Implement authentication and authorization with Spring Security & JWT
 - Practice automated testing and API documentation
-- Deploy and monitor a containerized application
+- Develop experience with Docker and containerized applications
+- Build a portfolio project representative of software used in biomedical and robotics environments
 
 ---
-
-## Planned Features
-
-### Device Management
-- Create, update, archive, and retrieve devices
-- Track operational status
-- Maintain device metadata
-
-### Measurements
-- Record measurements from devices
-- Associate measurements with individual devices
-- Track historical measurement data
-
-### Quality Rules
-- Define acceptable measurement ranges
-- Validate incoming measurements
-- Flag failed quality checks
-
-### Audit Logging
-- Record important system actions
-- Track user activity
-- Maintain change history
-
-### Security
-- JWT Authentication
-- Role-based authorization
-- Protected API endpoints
-
-### Monitoring
-- Spring Boot Actuator
-- Prometheus metrics
-- Grafana dashboards
-
----
-
 ## Tech Stack
 
 ### Backend
@@ -70,7 +36,15 @@ This project is being built from the ground up to strengthen my understanding of
 - Spring Web
 - Spring Data JPA
 - Spring Validation
-- Spring Security (planned)
+- Spring Security *(planned)*
+- Maven
+
+### Frontend
+
+* React
+* Vite
+* JavaScript
+* React Router
 
 ### Database
 
@@ -85,23 +59,131 @@ This project is being built from the ground up to strengthen my understanding of
 ### Testing
 
 - JUnit 5
-- Testcontainers (planned)
+- Spring Boot Test
+- Testcontainers *(planned)*
 
 ### Documentation
 
-- OpenAPI / Swagger (planned)
+- OpenAPI / Swagger *(planned)*
 
 ### Monitoring
 
 - Spring Boot Actuator
-- Prometheus (planned)
-- Grafana (planned)
+- Prometheus *(planned)*
+- Grafana *(planned)*
+
+___
+## Features
+
+- Light/dark mode toggle
+- Live previews
+- Fullscreen mode
+- Cross platform
+
+## Planned Features
+
+### Device Management
+
+- Create, update, archive, and retrieve devices
+- Track device information and operational status
+- Maintain device metadata
+- Paginate device results
+
+### Measurements
+
+* Record measurements from devices
+* Associate measurements with individual devices
+* Track historical measurement data
+
+### Quality Management
+
+* Define acceptable measurement ranges
+* Validate measurements against quality rules
+* Identify failed quality checks
+
+### Audit Logging
+
+- Record important system actions
+- Track user activity
+- Maintain change history
+
+### Security
+
+- JWT Authentication
+- Role-based authorization
+- Protected API endpoints
+
+### Monitoring
+
+* Application health monitoring
+* Application metrics
+* Operational monitoring dashboards
+
+___
+
+## Frontend
+
+The frontend is being developed with **React and Vite** and will provide a graphical interface for interacting with the BioRobotics Ops API.
+
+Planned frontend functionality includes:
+
+* Operations dashboard
+* Device management
+* Device search and pagination
+* Device details and editing
+* Measurement data
+* Quality rule results
+* Audit logs
+* Authentication and role-based access
+* Error handling and user feedback
+* Data visualization
+
+The frontend and backend are being developed together so that API functionality can be tested and demonstrated through a practical user interface rather than exclusively through API testing tools.
 
 ---
+## Current Progress
+
+### Completed
+
+* [x] Project initialized
+* [x] Maven configured
+* [x] Spring Boot application configured
+* [x] Java 21 configured
+* [x] Initial application architecture established
+* [x] PostgreSQL development environment
+* [x] Docker Compose configuration
+* [x] Flyway database migrations
+* [x] Device API
+* [x] Measurement API
+* [x] Quality rule functionality
+* [x] API search functionality
+* [x] Initial automated testing
+
+### In Progress
+
+* [ ] API pagination
+* [ ] API error handling
+* [ ] React frontend foundation
+* [ ] Frontend application layout
+* [ ] Frontend API integration
+* [ ] Device management interface
+
+### Planned
+
+* [ ] JWT authentication and authorization
+* [ ] Role-based access control
+* [ ] Audit logging
+* [ ] Measurement visualization
+* [ ] OpenAPI / Swagger documentation
+* [ ] Testcontainers integration
+* [ ] Prometheus metrics
+* [ ] Grafana dashboards
+* [ ] CI/CD with GitHub Actions
+* [ ] Cloud deployment
 
 ## Project Structure
 
-```
+```text
 src
 ├── controller
 ├── service
@@ -113,37 +195,84 @@ src
 └── security
 ```
 
----
+*The frontend will be maintained within the same repository as the backend to keep the application organized as a single full-stack project.*
+## Documentation
 
-## Current Progress
+### Frontend
 
-- [x] Project initialized
-- [x] Maven configured
-- [x] Spring Boot setup
-- [x] Java 21 configured
-- [x] Project architecture planned
-- [x] Docker environment planned
-- [ ] PostgreSQL container
-- [ ] Flyway migrations
-- [ ] Device API
-- [ ] Measurement API
-- [ ] Quality Rules
-- [ ] Authentication
-- [ ] Testing
-- [ ] Monitoring
-- [ ] Deployment
 
----
+
+## Architecture
+
+The application follows a full-stack architecture:
+
+```text
+┌──────────────────────────────┐
+│        React Frontend        │
+│         Vite + JS            │
+└──────────────┬───────────────┘
+               │
+               │ HTTP / REST
+               ▼
+┌──────────────────────────────┐
+│       Spring Boot API        │
+│                              │
+│ Controllers                  │
+│ Services                     │
+│ Repositories                 │
+│ DTOs                         │
+│ Validation                   │
+│ Security                     │
+└──────────────┬───────────────┘
+               │
+               │ JPA / SQL
+               ▼
+┌──────────────────────────────┐
+│         PostgreSQL           │
+│                              │
+│      Flyway Migrations       │
+└──────────────────────────────┘
+
+          Docker Compose
+        Development Environment
+```
+
+## Run Locally
+
+Clone the project
+
+```bash
+  git clone https://link-to-project
+```
+
+Go to the project directory
+
+```bash
+  cd my-project
+```
+
+Install dependencies
+
+```bash
+  npm install
+```
+
+Start the server
+
+```bash
+  npm run start
+```
 
 ## Running the Project
 
 ### Prerequisites
 
-- Java 21
-- Docker Desktop
-- Maven (or Maven Wrapper)
+* Java 21
+* Docker Desktop
+* Maven (or Maven Wrapper)
+* *Node.js and npm  (WIP)*
 
-### Clone the repository
+### Clone the Repository
 
 ```bash
 git clone https://github.com/BlaineBell21/biorobotics-ops-api.git
@@ -156,46 +285,37 @@ cd biorobotics-ops-api
 docker compose up -d
 ```
 
-### Run the application
+### Run the Backend
 
 ```bash
 ./mvnw spring-boot:run
 ```
 
----
+### Run the Frontend
 
+*(WIP)*
+
+Once the React frontend is configured:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
 ## Learning Objectives
 
-The main purpose of this project, is for me to gain a better understanding of what enterprise Java development in the biomedical industry is like, in addition to building skills in the types of applications, tools, and work environments I'd likely be working with day-to-day. 
+The primary purpose of this project is to gain practical experience with the technologies, architecture, and development practices used in enterprise software development, particularly in biomedical and robotics-related environments.
 
-This project is something far out of my comfort zone of anything I've ever built, and I am intentionally challenging myself with brand-new tools and systems I haven't used before in pursuit of that goal. It feels daunting so far, but I'm excited to learn, and if you read this far, I hope you're excited to see how this project evolves along with me!
+This project intentionally uses technologies and systems that are outside of my previous experience. Rather than building something familiar, I am using the project to challenge myself to learn new tools and understand how the different pieces of a production-style application work together.
 
-Areas of focus include:
+## Author
 
-- Spring Boot
-- REST API design
-- Object-Oriented Programming
-- Database design
-- Docker
-- Flyway
-- Authentication & Authorization
-- Testing
-- Monitoring
-- Production-ready application architecture
+### Blaine Anthony Bell
+- [My Github Profile](https://github.com/BlaineBell21)
+- [My LinkedIn Profile](https://www.linkedin.com/in/blaine-bell21/?skipRedirect=true)
 
----
-
-## Future Improvements
-
-- Report generation
-- Production workflow management
-- Device maintenance scheduling
-- API rate limiting
-- CI/CD with GitHub Actions
-- Cloud deployment
-
----
 
 ## License
 
-This project is licensed under the MIT License.
+[MIT](https://choosealicense.com/licenses/mit/)
+

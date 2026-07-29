@@ -1,5 +1,6 @@
 package com.bunbun.biorobotics_ops_api.model;
 
+import com.bunbun.biorobotics_ops_api.model.enums.DeviceStatus;
 import jakarta.persistence.*;
 
 import java.time.OffsetDateTime;
@@ -36,6 +37,9 @@ public class Device {
 
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt;
+
+    public Device() {
+    }
 
     public Device(String deviceCode, String name, String modelNumber, String manufacturer, String serialNumber, DeviceStatus status, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
         this.deviceCode = deviceCode;
