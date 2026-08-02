@@ -296,6 +296,6 @@ This project intentionally uses technologies and systems that are far outside my
 
 ## License
 
-[MIT](LICENSE)
+[MIT](https://choosealicense.com/licenses/mit/)
 
 [Back to Top](#biorobotics-ops-api)

@@ -33,11 +33,11 @@ public class DeviceService {
         List<DeviceResponse> devices = dtoConversion();
 
         System.out.println(status);
-       return devices.stream()
-               .filter(d -> deviceCode == null || SearchHelpers.containsIgnoreCase(d.getDeviceCode(), deviceCode))
-               .filter(d -> name == null || SearchHelpers.containsIgnoreCase(d.getName(), name))
-               .filter(d -> manufacturer == null || SearchHelpers.containsIgnoreCase(d.getManufacturer(), manufacturer))
-               .filter(d -> status == null || d.getStatus().getLabel().equalsIgnoreCase(status.getLabel())).toList();
+        return devices.stream()
+                .filter(d -> deviceCode == null || SearchHelpers.containsIgnoreCase(d.getDeviceCode(), deviceCode))
+                .filter(d -> name == null || SearchHelpers.containsIgnoreCase(d.getName(), name))
+                .filter(d -> manufacturer == null || SearchHelpers.containsIgnoreCase(d.getManufacturer(), manufacturer))
+                .filter(d -> status == null || d.getStatus().getLabel().equalsIgnoreCase(status.getLabel())).toList();
     }
 
     public DeviceResponse getById(Integer deviceId){
