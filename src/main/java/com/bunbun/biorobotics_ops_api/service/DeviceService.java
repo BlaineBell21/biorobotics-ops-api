@@ -30,19 +30,21 @@ public class DeviceService {
         this.deviceDTOMapper = deviceDTOMapper;
     }
 
+
     public List<DeviceDTO> search(
             String deviceCode,
             String name,
             String manufacturer,
             DeviceStatus status){
-        List<DeviceResponse> devices = dtoConversion();
+        List<DeviceDTO> device = getAllDevices();
 
         System.out.println(status);
-       return devices.stream()
-               .filter(d -> deviceCode == null || SearchHelpers.containsIgnoreCase(d.getDeviceCode(), deviceCode))
-               .filter(d -> name == null || SearchHelpers.containsIgnoreCase(d.getName(), name))
-               .filter(d -> manufacturer == null || SearchHelpers.containsIgnoreCase(d.getManufacturer(), manufacturer))
-               .filter(d -> status == null || d.getStatus().getLabel().equalsIgnoreCase(status.getLabel())).toList();
+       return device.stream()
+               .filter(d -> deviceCode == null || SearchHelpers.containsIgnoreCase(d.deviceCode(), deviceCode))
+               .filter(d -> name == null || SearchHelpers.containsIgnoreCase(d.name(), name))
+               .filter(d -> manufacturer == null || SearchHelpers.containsIgnoreCase(d.manufacturer(), manufacturer))
+               .filter(d -> status == null || d.status().getLabel().equalsIgnoreCase(status.getLabel()))
+               .collect(Collectors.toList());
     }
 
     public DeviceDTO getById(Integer deviceId){
