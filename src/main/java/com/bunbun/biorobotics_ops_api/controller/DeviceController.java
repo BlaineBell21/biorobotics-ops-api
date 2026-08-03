@@ -2,6 +2,7 @@ package com.bunbun.biorobotics_ops_api.controller;
 
 import com.bunbun.biorobotics_ops_api.dto.request.CreateDeviceRequest;
 import com.bunbun.biorobotics_ops_api.dto.request.UpdateDeviceRequest;
+import com.bunbun.biorobotics_ops_api.dto.response.DeviceDTO;
 import com.bunbun.biorobotics_ops_api.dto.response.DeviceResponse;
 import com.bunbun.biorobotics_ops_api.model.Device;
 import com.bunbun.biorobotics_ops_api.model.enums.DeviceStatus;
@@ -24,12 +25,12 @@ public class DeviceController {
     }
 
     @GetMapping
-    public ResponseEntity<List<DeviceResponse>> getAllDevices(){
+    public ResponseEntity<List<DeviceDTO>> getAllDevices(){
         return ResponseEntity.ok(deviceService.getAllDevices());
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<DeviceResponse>> searchDevices(
+    public ResponseEntity<List<DeviceDTO>> searchDevices(
             @RequestParam(name = "deviceCode", required = false) String deviceCode,
             @RequestParam(name = "name", required = false) String name,
             @RequestParam(name = "manufacturer", required = false) String manufacturer,
@@ -38,19 +39,20 @@ public class DeviceController {
     }
 
     @GetMapping("/{deviceId}")
-    public ResponseEntity<DeviceResponse> getById(@PathVariable int deviceId){
+    public ResponseEntity<DeviceDTO> getById(@PathVariable int deviceId){
         return ResponseEntity.ok(deviceService.getById(deviceId));
     }
 
     @PostMapping
     public ResponseEntity<Device> addDevice(@RequestBody CreateDeviceRequest device){
-        Device savedDevice = deviceService.create(device);
-        return ResponseEntity.status(HttpStatus.CREATED).body(savedDevice);
+        deviceService.create(device);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
     @PutMapping("/{deviceId}")
-    public ResponseEntity<Device> updateDevice(@PathVariable int deviceId, @RequestBody UpdateDeviceRequest device){
-        return ResponseEntity.ok(deviceService.update(deviceId,device));
+    public ResponseEntity<DeviceDTO> updateDevice(@PathVariable int deviceId, @RequestBody UpdateDeviceRequest device){
+        deviceService.update(deviceId,device);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{deviceId}")
