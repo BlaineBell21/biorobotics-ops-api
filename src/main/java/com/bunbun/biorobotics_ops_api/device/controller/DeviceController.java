@@ -4,7 +4,8 @@ import com.bunbun.biorobotics_ops_api.device.dto.request.CreateDeviceRequest;
 import com.bunbun.biorobotics_ops_api.device.dto.request.UpdateDeviceRequest;
 import com.bunbun.biorobotics_ops_api.device.dto.response.DeviceDTO;
 import com.bunbun.biorobotics_ops_api.device.enums.DeviceStatus;
-import com.bunbun.biorobotics_ops_api.service.DeviceService;
+
+import com.bunbun.biorobotics_ops_api.device.service.DeviceService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
