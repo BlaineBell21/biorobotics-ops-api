@@ -44,7 +44,7 @@ public class DeviceController {
     }
 
     @PostMapping
-    public ResponseEntity<Device> addDevice(@RequestBody CreateDeviceRequest device){
+    public ResponseEntity<DeviceDTO> addDevice(@RequestBody CreateDeviceRequest device){
         deviceService.create(device);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }

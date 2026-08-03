@@ -50,9 +50,7 @@ public class DeviceService {
     public DeviceDTO getById(Integer deviceId){
         Device foundDevice = deviceRepository.findById(deviceId).orElse(null);
 
-        if (foundDevice.getId() == null){
-            throw new IllegalArgumentException("ID value of: "+ deviceId +" is null or does not exist");
-        }
+        deviceNullCheck(foundDevice);
 
         return new DeviceDTO(
                 foundDevice.getId(),
@@ -69,23 +67,6 @@ public class DeviceService {
         return deviceRepository.findAll()
                 .stream()
                 .map(deviceDTOMapper).collect(Collectors.toList());
-    }
-
-    public List<DeviceResponse> dtoConversion(){
-        List<Device> allDevices = deviceRepository.findAll();
-        List<DeviceResponse> deviceDtos = new ArrayList<>();
-
-        for(Device device : allDevices){
-            DeviceResponse newDeviceResponse = new DeviceResponse(
-                    device.getId(),
-                    device.getDeviceCode(),
-                    device.getName(),
-                    device.getManufacturer(),
-                    device.getStatus()
-            );
-            deviceDtos.add(newDeviceResponse);
-        }
-        return deviceDtos;
     }
 
     public void create(CreateDeviceRequest device) {
@@ -109,7 +90,7 @@ public class DeviceService {
     public void update(int deviceId, UpdateDeviceRequest device){
         Device foundDevice = deviceRepository.findById(deviceId).orElseThrow();
 
-        temp(foundDevice);
+        deviceNullCheck(foundDevice);
 
         LocalDateTime localDateTime = LocalDateTime.now();
         ZoneOffset zoneOffset = ZoneOffset.UTC;
@@ -125,12 +106,12 @@ public class DeviceService {
 
     public void delete(int deviceId){
         Device device = deviceRepository.findById(deviceId).orElseThrow();
-        temp(device);
+        deviceNullCheck(device);
         deviceRepository.delete(device);
 
     }
 
-    public static void temp(Device device) {
+    public static void deviceNullCheck(Device device) {
         if(device == null){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND);
         }
