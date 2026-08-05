@@ -1,5 +1,6 @@
 package com.bunbun.biorobotics_ops_api.device.service;
 
+import com.bunbun.biorobotics_ops_api.device.dto.response.DevicePageAndSortingRepository;
 import com.bunbun.biorobotics_ops_api.device.model.Device;
 import com.bunbun.biorobotics_ops_api.device.dto.mapping.DeviceDTOMapper;
 import com.bunbun.biorobotics_ops_api.device.dto.request.CreateDeviceRequest;
@@ -8,6 +9,8 @@ import com.bunbun.biorobotics_ops_api.device.dto.response.DeviceDTO;
 import com.bunbun.biorobotics_ops_api.device.enums.DeviceStatus;
 import com.bunbun.biorobotics_ops_api.device.repository.DeviceRepository;
 import com.bunbun.biorobotics_ops_api.utils.SearchHelpers;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -21,6 +24,7 @@ import java.util.stream.Collectors;
 
 @Service
 public class DeviceService {
+
     private final DeviceRepository deviceRepository;
     private final DeviceDTOMapper deviceDTOMapper;
 
@@ -28,7 +32,6 @@ public class DeviceService {
         this.deviceRepository = deviceRepository;
         this.deviceDTOMapper = deviceDTOMapper;
     }
-
 
     public List<DeviceDTO> search(
             String deviceCode,
@@ -67,6 +70,7 @@ public class DeviceService {
                 .stream()
                 .map(deviceDTOMapper).collect(Collectors.toList());
     }
+
 
     public void create(CreateDeviceRequest device) {
         LocalDateTime localDateTime = LocalDateTime.now();
