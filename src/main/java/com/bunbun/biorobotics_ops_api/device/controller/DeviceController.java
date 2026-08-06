@@ -6,6 +6,7 @@ import com.bunbun.biorobotics_ops_api.device.dto.response.DeviceDTO;
 import com.bunbun.biorobotics_ops_api.device.enums.DeviceStatus;
 
 import com.bunbun.biorobotics_ops_api.device.service.DeviceService;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,15 +31,15 @@ public class DeviceController {
     }
 
     @GetMapping("/search")
-    public ResponseEntity<List<DeviceDTO>> searchDevices(
+    public ResponseEntity<Page<DeviceDTO>> searchDevices(
             @RequestParam(name = "deviceCode", required = false) String deviceCode,
             @RequestParam(name = "name", required = false) String name,
             @RequestParam(name = "manufacturer", required = false) String manufacturer,
             @RequestParam(name = "status", required = false)DeviceStatus status,
-            @RequestParam(name = "pageNo", required = false, defaultValue = "1") int pageNo,
-            @RequestParam(name = "pageSize", required = false, defaultValue = "10") int pageSize){
+            @RequestParam(name = "page", required = false, defaultValue = "0") int pageNo,
+            @RequestParam(name = "size", required = false, defaultValue = "10") int pageSize){
         PageRequest pageRequest = PageRequest.of(pageNo,pageSize);
-        return ResponseEntity.ok(deviceService.search(deviceCode, name, manufacturer, status));
+        return ResponseEntity.ok(deviceService.search(deviceCode, name, manufacturer, status, pageRequest));
     }
 
     @GetMapping("/{deviceId}")

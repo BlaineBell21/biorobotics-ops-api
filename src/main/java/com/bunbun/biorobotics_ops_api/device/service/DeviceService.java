@@ -1,6 +1,7 @@
 package com.bunbun.biorobotics_ops_api.device.service;
 
-import com.bunbun.biorobotics_ops_api.device.dto.response.DevicePageAndSortingRepository;
+
+import com.bunbun.biorobotics_ops_api.device.DeviceSpecifications;
 import com.bunbun.biorobotics_ops_api.device.model.Device;
 import com.bunbun.biorobotics_ops_api.device.dto.mapping.DeviceDTOMapper;
 import com.bunbun.biorobotics_ops_api.device.dto.request.CreateDeviceRequest;
@@ -8,9 +9,9 @@ import com.bunbun.biorobotics_ops_api.device.dto.request.UpdateDeviceRequest;
 import com.bunbun.biorobotics_ops_api.device.dto.response.DeviceDTO;
 import com.bunbun.biorobotics_ops_api.device.enums.DeviceStatus;
 import com.bunbun.biorobotics_ops_api.device.repository.DeviceRepository;
-import com.bunbun.biorobotics_ops_api.utils.SearchHelpers;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.domain.Specification;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 import org.springframework.web.server.ResponseStatusException;
@@ -33,20 +34,23 @@ public class DeviceService {
         this.deviceDTOMapper = deviceDTOMapper;
     }
 
-    public List<DeviceDTO> search(
+    public Page<DeviceDTO> search(
             String deviceCode,
             String name,
             String manufacturer,
-            DeviceStatus status){
-        List<DeviceDTO> device = getAllDevices();
+            DeviceStatus status,
+            PageRequest pageRequest) {
 
-        System.out.println(status);
-       return device.stream()
-               .filter(d -> deviceCode == null || SearchHelpers.containsIgnoreCase(d.deviceCode(), deviceCode))
-               .filter(d -> name == null || SearchHelpers.containsIgnoreCase(d.name(), name))
-               .filter(d -> manufacturer == null || SearchHelpers.containsIgnoreCase(d.manufacturer(), manufacturer))
-               .filter(d -> status == null || d.status().getLabel().equalsIgnoreCase(status.getLabel()))
-               .collect(Collectors.toList());
+        Specification<Device> spec = Specification.unrestricted();
+
+       spec = spec.and(DeviceSpecifications.hasDeviceCode(deviceCode));
+       spec = spec.and(DeviceSpecifications.hasName(name));
+       spec = spec.and(DeviceSpecifications.hasManufacturer(manufacturer));
+       spec = spec.and(DeviceSpecifications.hasDeviceStatus(status));
+
+        Page<Device> page = deviceRepository.findAll(spec, pageRequest);
+
+        return page.map(deviceDTOMapper);
     }
 
     public DeviceDTO getById(Integer deviceId){
