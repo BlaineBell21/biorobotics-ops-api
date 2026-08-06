@@ -34,6 +34,7 @@ public class DeviceService {
         this.deviceDTOMapper = deviceDTOMapper;
     }
 
+
     public Page<DeviceDTO> search(
             String deviceCode,
             String name,
