@@ -163,7 +163,7 @@ Planned frontend functionality includes:
 
 ### In Progress
 
-* [ ] API pagination
+* [x] API pagination
 * [ ] API error handling
 * [ ] React frontend foundation
 * [ ] Frontend application layout
